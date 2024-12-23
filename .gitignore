@@ -53,6 +53,5 @@ Thumbs.db
 *.seed
 *.pid.lock
 
-
 # Other
 .DS_Store
