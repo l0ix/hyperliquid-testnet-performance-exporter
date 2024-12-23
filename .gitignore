@@ -13,7 +13,7 @@ build/
 dist/
 out/
 
-# Environment variables
+# Environment vars
 .env
 .env.local
 .env.development.local
@@ -52,3 +52,7 @@ Thumbs.db
 *.pid
 *.seed
 *.pid.lock
+
+
+# Other
+.DS_Store
