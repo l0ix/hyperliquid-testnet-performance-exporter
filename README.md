@@ -18,6 +18,12 @@ This exporter not only provides real-time metrics but also enables historical tr
 - Monitor validator jailing history and identify patterns in validator behavior
 
 
+
+
+## Preview
+
+![Hyperliquid Validators Prometheus Exporter Dashboard](./assets/grafana.gif)
+
 ## Features
 
 - Collect metrics for all Hyperliquid validators
@@ -167,7 +173,7 @@ You can customize the exporter's configuration using environment variables
 ├── package.json
 ├── src
 │   ├── metrics
-│   │   └── hl_validators.metrics.ts
+│   └── hl_validators.metrics.ts
 │   ├── routes
 │   │   └── metrics.routes.ts
 │   ├── services
