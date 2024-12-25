@@ -30,7 +30,7 @@ The complete monitoring stack can be deployed on the Akash Network with a single
 4. Configure Prometheus data source in Grafana:
    - Navigate to Configuration > Data Sources
    - Click "Add data source" and select Prometheus
-   - Set URL to `http://prometheus:9090` (internal Docker network name)
+   - Set URL to `http://<akash url>:<akash port>`
    - Click "Save & Test" to verify the connection
 
 5. Import the pre-configured Grafana dashboard:
