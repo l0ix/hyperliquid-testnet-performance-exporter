@@ -13,7 +13,7 @@ services:
         prometheus-data:
           mount: /prometheus/prometheus_data:/prometheus
           readOnly: false
-  grafnaa:
+  grafana:
     image: grafana/grafana:latest
     expose:
       - port: 3000
@@ -84,7 +84,7 @@ profiles:
         prometheus:
           denom: uakt
           amount: 10000
-        grafnaa:
+        grafana:
           denom: uakt
           amount: 10000
         exporter:
@@ -95,9 +95,9 @@ deployment:
     dcloud:
       profile: prometheus
       count: 1
-  grafnaa:
+  grafana:
     dcloud:
-      profile: grafnaa
+      profile: grafana
       count: 1
   exporter:
     dcloud:
