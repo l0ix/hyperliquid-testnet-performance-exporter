@@ -1,0 +1,105 @@
+---
+version: "2.0"
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    expose:
+      - port: 9090
+        as: 9090
+        to:
+          - global: true
+    params:
+      storage:
+        prometheus-data:
+          mount: /prometheus/prometheus_data:/prometheus
+          readOnly: false
+  grafnaa:
+    image: grafana/grafana:latest
+    expose:
+      - port: 3000
+        as: 3000
+        to:
+          - global: true
+    params:
+      storage:
+        grafana-data:
+          mount: /grafana/:/etc/grafana/
+          readOnly: false
+  exporter:
+    image: l0ix/exporter-hyperliquid
+    expose:
+      - port: 3333
+        as: 3333
+        to:
+          - global: true
+    params:
+      storage:
+        data:
+          mount: /
+          readOnly: false
+profiles:
+  compute:
+    prometheus:
+      resources:
+        cpu:
+          units: 1
+        memory:
+          size: 256Mi
+        storage:
+          - size: 1Gi
+          - name: prometheus-data
+            size: 5Gi
+            attributes:
+              persistent: true
+              class: beta3
+    grafana:
+      resources:
+        cpu:
+          units: 1
+        memory:
+          size: 256Mi
+        storage:
+          - size: 1Gi
+          - name: grafana-data
+            size: 1Gi
+            attributes:
+              persistent: true
+              class: beta3
+    exporter:
+      resources:
+        cpu:
+          units: 1
+        memory:
+          size: 256Mi
+        storage:
+          - size: 1Gi
+          - name: data
+            size: 1Gi
+            attributes:
+              persistent: true
+              class: beta3
+  placement:
+    dcloud:
+      pricing:
+        prometheus:
+          denom: uakt
+          amount: 10000
+        grafnaa:
+          denom: uakt
+          amount: 10000
+        exporter:
+          denom: uakt
+          amount: 10000
+deployment:
+  prometheus:
+    dcloud:
+      profile: prometheus
+      count: 1
+  grafnaa:
+    dcloud:
+      profile: grafnaa
+      count: 1
+  exporter:
+    dcloud:
+      profile: exporter
+      count: 1
