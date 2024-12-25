@@ -18,6 +18,32 @@ This exporter not only provides real-time metrics but also enables historical tr
 - Monitor validator jailing history and identify patterns in validator behavior
 
 
+## Deploy on Akash Network [![Akash](https://img.shields.io/badge/Akash-F6444F?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgMkw0LjkyODkzIDYuNUw0LjkyODkzIDE1LjVMMTIgMjBMMTkuMDcxMSAxNS41TDE5LjA3MTEgNi41TDEyIDJaIiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg==&logoColor=white)](https://akash.network)
+
+The complete monitoring stack can be deployed on the Akash Network with a single click using the provided `akash.sdl.yml` file.
+
+ To deploy:
+
+1. Copy the `akash.sdl.yml` file
+2. Deploy through the [Akash Console](https://console.akash.network/new-deployment?step=edit-deployment) or CLI
+3. Access your monitoring stack through the provided endpoints
+4. Configure Prometheus data source in Grafana:
+   - Navigate to Configuration > Data Sources
+   - Click "Add data source" and select Prometheus
+   - Set URL to `http://prometheus:9090` (internal Docker network name)
+   - Click "Save & Test" to verify the connection
+
+5. Import the pre-configured Grafana dashboard:
+   - Log into Grafana (default credentials: admin/admin)
+   - Navigate to Dashboards > Import
+   - Upload the provided `grafana/dashboards/hyperliquid.json` file
+   - Select your Prometheus data source
+   - Click Import to finalize
+
+
+The deployment is optimized for cost-effectiveness while maintaining performance, with resource allocations suitable for monitoring multiple validators.
+
+
 
 
 ## Preview
